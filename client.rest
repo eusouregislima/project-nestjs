@@ -1,0 +1,31 @@
+@baseUrl = http://localhost:3000
+
+# MESSAGES
+### Listar todas as mensagens
+GET {{baseUrl}}/messages/
+?limit=10
+&offset=0
+### Listar uma mensagem específica
+GET {{baseUrl}}/messages/2
+### Criar uma mensagem
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+ {
+    "text": "Mensagem 2",
+    "from": "John Doe",
+    "to": "Jane Doe"
+  }
+### Atualizar uma mensagem
+PATCH {{baseUrl}}/messages/1
+Content-Type: application/json
+
+ {
+    "text": "Atualizar recado 2",
+    "from": "John Doe",
+    "to": "Jane Doe",
+    "read": true,
+    "updatedAt": "2025-09-27T20:33:31.422Z"
+  }
+### Remover uma mensagem
+DELETE {{baseUrl}}/messages/1
