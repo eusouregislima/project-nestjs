@@ -14,6 +14,7 @@ export class CreateMessagesDto {
     message: 'O texto deve ter no máximo 255 caracteres',
   })
   readonly text: string;
+
   @IsString({
     message: 'O texto deve ser uma string',
   })
@@ -23,10 +24,11 @@ export class CreateMessagesDto {
   @MinLength(3, {
     message: 'O texto deve ter pelo menos 3 caracteres',
   })
-  @MaxLength(255, {
-    message: 'O texto deve ter no máximo 255 caracteres',
+  @MaxLength(50, {
+    message: 'O texto deve ter no máximo 50 caracteres',
   })
   readonly from: string;
+
   @IsString({
     message: 'O texto deve ser uma string',
   })
@@ -36,8 +38,8 @@ export class CreateMessagesDto {
   @MinLength(3, {
     message: 'O texto deve ter pelo menos 3 caracteres',
   })
-  @MaxLength(255, {
-    message: 'O texto deve ter no máximo 255 caracteres',
+  @MaxLength(50, {
+    message: 'O texto deve ter no máximo 50 caracteres',
   })
   readonly to: string;
 }

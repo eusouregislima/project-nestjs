@@ -1,3 +1,4 @@
+import { IsEmail } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -7,21 +8,19 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Message {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'varchar', length: 150 })
+  name: string;
+
+  @Column({ unique: true })
+  @IsEmail()
+  email: string;
+
   @Column({ type: 'varchar', length: 255 })
-  text: string;
-
-  @Column({ type: 'varchar', length: 50 })
-  from: string;
-
-  @Column({ type: 'varchar', length: 50 })
-  to: string;
-
-  @Column({ default: false })
-  read: boolean;
+  passwordHash: string;
 
   @CreateDateColumn()
   createdAt: Date;
