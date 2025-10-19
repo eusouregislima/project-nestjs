@@ -5,31 +5,35 @@
 GET {{baseUrl}}/messages/
 ?limit=10
 &offset=0
+Authorization: Bearer Aquivemotoken
 
 ### Listar uma mensagem específica
-GET {{baseUrl}}/messages/2
+GET {{baseUrl}}/messages/17
 
 ### Criar uma mensagem
 POST {{baseUrl}}/messages
 Content-Type: application/json
 
  {
-    "text": "Quarta mensagem da base",
-    "from": "John Doe",
-    "to": "Jane Doe"
+    "text": "New message",
+    "fromId": 14,
+    "toId": 15
   }
 
 ### Atualizar uma mensagem
-PATCH {{baseUrl}}/messages/1
+PATCH {{baseUrl}}/messages/17
 Content-Type: application/json
 
  {
-    "read": false
+    "read": true,
+    "text": "Ambos ao mesmo tempo"
   }
 
 ### Remover uma mensagem
-DELETE {{baseUrl}}/messages/3
+DELETE {{baseUrl}}/messages/18
 
+### Remover a base de mensagens
+DELETE {{baseUrl}}/messages/
 
 
 # USERS
@@ -46,8 +50,8 @@ POST {{baseUrl}}/users
 Content-Type: application/json
 
  {
-    "name": "John Doe",
-    "email": "john.doe12@example.com",
+    "name": "Xereneia Teste",
+    "email": "xerenei@example.com",
     "password": "123456"
   }
 
@@ -61,5 +65,7 @@ Content-Type: application/json
   }
 
 ### Remover um usuário
-DELETE {{baseUrl}}/users/4
+DELETE {{baseUrl}}/users/10
 
+### Deletar a base de usuários
+DELETE {{baseUrl}}/users/

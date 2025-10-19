@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsPositive,
+  IsString,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class CreateMessagesDto {
   @IsString({
@@ -15,31 +21,37 @@ export class CreateMessagesDto {
   })
   readonly text: string;
 
-  @IsString({
-    message: 'O texto deve ser uma string',
-  })
-  @IsNotEmpty({
-    message: 'O texto é obrigatório',
-  })
-  @MinLength(3, {
-    message: 'O texto deve ter pelo menos 3 caracteres',
-  })
-  @MaxLength(50, {
-    message: 'O texto deve ter no máximo 50 caracteres',
-  })
-  readonly from: string;
+  @IsPositive()
+  fromId: number;
 
-  @IsString({
-    message: 'O texto deve ser uma string',
-  })
-  @IsNotEmpty({
-    message: 'O texto é obrigatório',
-  })
-  @MinLength(3, {
-    message: 'O texto deve ter pelo menos 3 caracteres',
-  })
-  @MaxLength(50, {
-    message: 'O texto deve ter no máximo 50 caracteres',
-  })
-  readonly to: string;
+  @IsPositive()
+  toId: number;
+
+  // @IsString({
+  //   message: 'O texto deve ser uma string',
+  // })
+  // @IsNotEmpty({
+  //   message: 'O texto é obrigatório',
+  // })
+  // @MinLength(3, {
+  //   message: 'O texto deve ter pelo menos 3 caracteres',
+  // })
+  // @MaxLength(50, {
+  //   message: 'O texto deve ter no máximo 50 caracteres',
+  // })
+  // readonly from: string;
+
+  // @IsString({
+  //   message: 'O texto deve ser uma string',
+  // })
+  // @IsNotEmpty({
+  //   message: 'O texto é obrigatório',
+  // })
+  // @MinLength(3, {
+  //   message: 'O texto deve ter pelo menos 3 caracteres',
+  // })
+  // @MaxLength(50, {
+  //   message: 'O texto deve ter no máximo 50 caracteres',
+  // })
+  // readonly to: string;
 }

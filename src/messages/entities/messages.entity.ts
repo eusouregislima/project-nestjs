@@ -1,7 +1,10 @@
+import { User } from 'src/users/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -14,11 +17,17 @@ export class Message {
   @Column({ type: 'varchar', length: 255 })
   text: string;
 
-  @Column({ type: 'varchar', length: 50 })
-  from: string;
+  // Muitas mensagens podem ser enviadas por um único usuário (remetente)
+  @ManyToOne(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  // Especifica a coluna 'from' da tabela 'messages' que referencia o id da pessoa na tabela 'users'
+  @JoinColumn({ name: 'from' })
+  from: User;
 
-  @Column({ type: 'varchar', length: 50 })
-  to: string;
+  // Muitas mensagens podem ser enviadas para um único usuário (destinatário)
+  @ManyToOne(() => User, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  // Especifica a coluna 'to' da tabela 'messages' que referencia o id da pessoa na tabela 'users'
+  @JoinColumn({ name: 'to' })
+  to: User;
 
   @Column({ default: false })
   read: boolean;

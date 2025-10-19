@@ -75,4 +75,9 @@ export class UsersService {
     }
     return this.userRepository.remove(user);
   }
+
+  async removeAll() {
+    const users = await this.userRepository.find();
+    return this.userRepository.remove(users);
+  }
 }
