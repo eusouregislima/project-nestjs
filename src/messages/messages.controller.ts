@@ -19,14 +19,6 @@ import { MessagesService } from './messages.service';
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
-  // removido pois era somente para ver como funciona os interceptors
-  // @UseInterceptors(
-  //   TimingConnectionInterceptor,
-  //   ErrorHandlingInterceptor,
-  //   SimpleCacheInterceptor,
-  //   ChangeDataInterceptor
-  // )
-
   @HttpCode(HttpStatus.OK)
   @Get()
   findAll(@Query() paginationDto: PaginationDto) {
